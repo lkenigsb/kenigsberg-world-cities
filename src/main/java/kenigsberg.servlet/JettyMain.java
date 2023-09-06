@@ -7,7 +7,9 @@ import org.eclipse.jetty.servlet.ServletHandler;
 
 /**
  * Runs the WorldCities servlet locally.
- * It can be accessed through the browser with at http://localhost:8080/worldCities?lat=40.771724&lon=-73.988326
+ * It can be accessed through the browser with at
+ * Manhattan: http://localhost:8080/worldCities?lat=40.771724&lon=-73.988326
+ * Tokyo: http://localhost:8080/worldCities?lat=35.6897&lon=139.6922
  */
 public class JettyMain {
 

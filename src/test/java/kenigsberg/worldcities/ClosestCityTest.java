@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,9 +17,9 @@ class ClosestCityTest {
         ClosestCity closestCity = new ClosestCity(lat, lon);
 
         // when
-        String cityName = closestCity.getClosestCity();
+        ArrayList<String> cityName = closestCity.getClosestCity();
 
         // then
-        Assertions.assertEquals(" Tokyo", cityName);
+        Assertions.assertEquals("Tokyo", cityName.get(0));
     }
 }

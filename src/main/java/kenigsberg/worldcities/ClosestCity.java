@@ -2,6 +2,7 @@ package kenigsberg.worldcities;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,44 +15,49 @@ import static java.lang.Math.sqrt;
 
 public class ClosestCity {
 
-    ArrayList<Double> coordinates = new ArrayList<>();
+    private double lat;
+    private double lon;
 
-    public ClosestCity(double lat, double lon)
-    {
-        coordinates.add(lat);
-        coordinates.add(lon);
+    public ClosestCity(double lat, double lon) {
+        this.lat = lat;
+        this.lon = lon;
     }
 
-    public String getClosestCity() throws IOException {
+    public ArrayList<String> getClosestCity() throws IOException {
 
-        double lat1 = coordinates.get(0);
-        double lon1 = coordinates.get(1);
+        ArrayList<String> closetCity = new ArrayList<>();
+
+        double lat1 = this.lat;
+        double lon1 = this.lon;
 
         File csvData = new File("src/main/resources/worldcities.csv");
         CSVParser parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.RFC4180);
-        List citiesCoordinateList = parser.stream().toList();
+        List<CSVRecord> records = parser.getRecords();
 
-        String[] individualCityCoodinates = citiesCoordinateList.get(1).toString().split(","); //excluding column names
-        double lat2 = Double.parseDouble(individualCityCoodinates[4]);
-        double lon2 = Double.parseDouble(individualCityCoodinates[5]);
-        String closestCity = individualCityCoodinates[3];
+        double lat2 = Double.parseDouble(records.get(1).get(2));
+        double lon2 = Double.parseDouble(records.get(1).get(3));
+
+        closetCity.add(records.get(1).get(0));
+        closetCity.add(String.valueOf(lat2));
+        closetCity.add(String.valueOf(lon2));
 
         double initialDistance = sqrt(((lat2 - lat1) * (lat2 - lat1)) + ((lon2 - lon1) * (lon2 - lon1)));
 
-        for (int i = 2; i < citiesCoordinateList.size(); i++)
+        for (int i = 2; i < records.size(); i++)
         {
-            individualCityCoodinates = citiesCoordinateList.get(i).toString().split(",");
-            lat2 = Double.parseDouble(individualCityCoodinates[4]);
-            lon2 = Double.parseDouble(individualCityCoodinates[5]);
+            lat2 = Double.parseDouble(records.get(i).get(2));
+            lon2 = Double.parseDouble(records.get(i).get(3));
 
             double distance = sqrt(((lat2 - lat1) * (lat2 - lat1)) + ((lon2 - lon1) * (lon2 - lon1)));
 
             if (distance < initialDistance)
             {
-                closestCity = individualCityCoodinates[3];
+                closetCity.set(0, records.get(i).get(0));
+                closetCity.set(1, records.get(i).get(2));
+                closetCity.set(2, records.get(i).get(3));
                 initialDistance = distance;
             }
         }
-        return closestCity;
+        return closetCity;
     }
 }
