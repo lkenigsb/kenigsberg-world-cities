@@ -14,17 +14,36 @@ import java.util.ArrayList;
  * Servlet that find the closest city in the worldcities.csv and returns it as a json response
  */
 public class WorldCitiesServlet extends HttpServlet {
-    private Gson gson = new Gson();
+
+    ClosestCity closestCity;
+    private Gson gson;
+
+    /**
+     * This is used by Jetty
+     */
+    public WorldCitiesServlet()
+    {
+        this(new Gson(), new ClosestCity());
+    }
+
+    /**
+     * This is used in tests
+     * @param gson
+     */
+    public WorldCitiesServlet(Gson gson, ClosestCity closestCity)
+    {
+        this.gson = gson;
+        this.closestCity = new ClosestCity();
+    }
 
     @Override
     protected void doGet(
             HttpServletRequest req,
             HttpServletResponse resp
     ) throws ServletException, IOException {
-        double lat = Double.parseDouble(req.getParameter("lat"));
-        double lon = Double.parseDouble(req.getParameter("lon"));
-        ClosestCity closestCity = new ClosestCity(lat, lon);
-        ArrayList<String> city = closestCity.getClosestCity();
+        String lat = (req.getParameter("lat"));
+        String lon = (req.getParameter("lon"));
+        ArrayList<String> city = this.closestCity.getClosestCity(Double.parseDouble(lat), Double.parseDouble(lon));
 
         CityResponse cityResponse = new CityResponse(
                 city.get(0), Double.parseDouble(city.get(1)), Double.parseDouble(city.get(2)));

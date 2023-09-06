@@ -15,20 +15,13 @@ import static java.lang.Math.sqrt;
 
 public class ClosestCity {
 
-    private double lat;
-    private double lon;
 
-    public ClosestCity(double lat, double lon) {
-        this.lat = lat;
-        this.lon = lon;
+    public ClosestCity() {
     }
 
-    public ArrayList<String> getClosestCity() throws IOException {
+    public ArrayList<String> getClosestCity(double lat1, double lon1) throws IOException {
 
         ArrayList<String> closetCity = new ArrayList<>();
-
-        double lat1 = this.lat;
-        double lon1 = this.lon;
 
         File csvData = new File("src/main/resources/worldcities.csv");
         CSVParser parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.RFC4180);

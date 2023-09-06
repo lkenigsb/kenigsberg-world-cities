@@ -14,10 +14,10 @@ class ClosestCityTest {
         // given
         double lat = 35.6897;
         double lon = 139.6922;
-        ClosestCity closestCity = new ClosestCity(lat, lon);
+        ClosestCity closestCity = new ClosestCity();
 
         // when
-        ArrayList<String> cityName = closestCity.getClosestCity();
+        ArrayList<String> cityName = closestCity.getClosestCity(lat, lon);
 
         // then
         Assertions.assertEquals("Tokyo", cityName.get(0));
