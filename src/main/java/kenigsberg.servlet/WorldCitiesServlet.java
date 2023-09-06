@@ -26,7 +26,8 @@ public class WorldCitiesServlet extends HttpServlet {
         ClosestCity closestCity = new ClosestCity(lat, lon);
         ArrayList<String> city = closestCity.getClosestCity();
 
-        CityResponse cityResponse = new CityResponse(city.get(0), Double.parseDouble(city.get(1)), Double.parseDouble(city.get(2)));
+        CityResponse cityResponse = new CityResponse(
+                city.get(0), Double.parseDouble(city.get(1)), Double.parseDouble(city.get(2)));
         resp.setContentType("text/json");
         resp.getWriter().println(gson.toJson(cityResponse));
     }
