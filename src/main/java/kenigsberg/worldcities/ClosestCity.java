@@ -2,13 +2,9 @@ package kenigsberg.worldcities;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.lang.reflect.Array;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
@@ -19,6 +15,7 @@ import static java.lang.Math.sqrt;
 public class ClosestCity {
 
     ArrayList<Double> coordinates = new ArrayList<>();
+
     public ClosestCity(double lat, double lon)
     {
         coordinates.add(lat);

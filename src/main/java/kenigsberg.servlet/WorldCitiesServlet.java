@@ -14,6 +14,7 @@ import java.io.IOException;
  */
 public class WorldCitiesServlet extends HttpServlet {
     private Gson gson = new Gson();
+
     @Override
     protected void doGet(
             HttpServletRequest req,
