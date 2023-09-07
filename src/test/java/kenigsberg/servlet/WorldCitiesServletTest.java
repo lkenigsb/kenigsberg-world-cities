@@ -24,7 +24,7 @@ public class WorldCitiesServletTest {
     @Test
     public void doGet() throws ServletException, IOException {
         // given
-        ClosestCity closestCity = mock();
+        final ClosestCity closestCity = mock();
         ArrayList<String> closestCityResult = new ArrayList<>();
         closestCityResult.add("Manhattan");
         closestCityResult.add("40.771724");
@@ -33,7 +33,7 @@ public class WorldCitiesServletTest {
 
         Gson gson = new Gson();
 
-        WorldCitiesServlet servlet = new WorldCitiesServlet(gson, closestCity);
+        final WorldCitiesServlet servlet = new WorldCitiesServlet(gson, closestCity);
         HttpServletRequest request = mock();
         doReturn("40.771724").when(request).getParameter("lat");
         doReturn("-73.988").when(request).getParameter("lon");
