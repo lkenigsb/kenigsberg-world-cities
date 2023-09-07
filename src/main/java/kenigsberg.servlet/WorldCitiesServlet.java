@@ -28,8 +28,8 @@ public class WorldCitiesServlet extends HttpServlet {
 
     /**
      * This is used in tests
-     * @param gson - to be the Json file to return ot the user
      *
+     * @param gson - to be the Json file to return ot the user
      * @param closestCity - to calculate the closest city of the parem coordinates
      *
      */
