@@ -1,4 +1,4 @@
-package kenigsberg.worldcities;
+package kenigsberg.closestcity;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;

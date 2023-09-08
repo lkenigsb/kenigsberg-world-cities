@@ -1,12 +1,11 @@
-package kenigsberg.worldcities;
+package kenigsberg.closestcity;
 
+import kenigsberg.closestcity.ClosestCity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ClosestCityTest {
     @Test

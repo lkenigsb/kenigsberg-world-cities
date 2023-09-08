@@ -1,7 +1,7 @@
 package kenigsberg.servlet;
 
 import com.google.gson.Gson;
-import kenigsberg.worldcities.ClosestCity;
+import kenigsberg.closestcity.ClosestCity;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

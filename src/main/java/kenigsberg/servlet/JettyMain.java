@@ -20,7 +20,7 @@ public class JettyMain {
         connector.setPort(8080);
         server.setConnectors(new Connector[]{connector});
 
-        // Adds the WorldCitiesServlet to the Server
+        // Adds the kenigsberg.servlet.WorldCitiesServlet to the Server
         ServletHandler handler = new ServletHandler();
         handler.addServletWithMapping(WorldCitiesServlet.class, "/worldCities");
         server.setHandler(handler);

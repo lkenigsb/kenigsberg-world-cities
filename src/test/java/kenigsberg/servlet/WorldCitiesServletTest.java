@@ -1,11 +1,8 @@
 package kenigsberg.servlet;
 
 import com.google.gson.Gson;
-import kenigsberg.worldcities.ClosestCity;
-import org.eclipse.jetty.server.Connector;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.ServerConnector;
-import org.eclipse.jetty.servlet.ServletHandler;
+import kenigsberg.closestcity.ClosestCity;
+import kenigsberg.servlet.WorldCitiesServlet;
 import org.junit.jupiter.api.Test;
 
 import javax.servlet.ServletException;
@@ -16,7 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class WorldCitiesServletTest {
