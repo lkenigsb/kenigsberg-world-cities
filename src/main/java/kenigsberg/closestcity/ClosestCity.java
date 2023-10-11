@@ -4,8 +4,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
@@ -23,8 +23,9 @@ public class ClosestCity {
 
         ArrayList<String> closetCity = new ArrayList<>();
 
-        File csvData = new File("src/main/resources/worldcities.csv");
-        CSVParser parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.RFC4180);
+        InputStream inputStream = ClosestCity.class.getClassLoader()
+                .getResourceAsStream("worldcities.csv");
+        CSVParser parser = CSVParser.parse(inputStream, Charset.defaultCharset(), CSVFormat.RFC4180);
         List<CSVRecord> records = parser.getRecords();
 
         double lat2 = Double.parseDouble(records.get(1).get(2));

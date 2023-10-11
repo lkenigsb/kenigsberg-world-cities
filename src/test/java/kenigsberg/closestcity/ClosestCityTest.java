@@ -1,6 +1,5 @@
 package kenigsberg.closestcity;
 
-import kenigsberg.closestcity.ClosestCity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
